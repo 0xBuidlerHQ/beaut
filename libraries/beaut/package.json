@@ -1,0 +1,36 @@
+{
+	"name": "@0xhq/beaut",
+	"version": "0.0.0",
+	"type": "module",
+	"main": "dist/index.mjs",
+	"types": "dist/index.d.mts",
+	"exports": {
+		".": {
+			"types": "./dist/core.d.ts",
+			"import": "./dist/core.mjs"
+		},
+		"./react": {
+			"types": "./dist/react.d.ts",
+			"import": "./dist/react.mjs"
+		}
+	},
+	"scripts": {
+		"dev": "tsdown --watch",
+		"build": "tsdown",
+		"test": "npx vitest",
+		"test:watch": "npx vitest --watch"
+	},
+	"dependencies": {
+		"typescript": "^6.0.2",
+		"viem": "^2.47.6"
+	},
+	"peerDependencies": {
+		"react": "^19.2.4",
+		"react-dom": "^19.2.4"
+	},
+	"devDependencies": {
+		"@types/node": "^25.5.0",
+		"tsdown": "^0.21.1",
+		"vitest": "^4.1.0"
+	}
+}
