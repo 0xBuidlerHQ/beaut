@@ -2,16 +2,16 @@
 	"name": "@0xhq/beaut",
 	"version": "0.0.0",
 	"type": "module",
-	"main": "dist/index.mjs",
-	"types": "dist/index.d.mts",
+	"main": "./dist/core.mjs",
+	"types": "./dist/core.d.mts",
 	"exports": {
 		".": {
-			"types": "./dist/core.d.ts",
-			"import": "./dist/core.mjs"
+			"import": "./dist/core.mjs",
+			"types": "./dist/core.d.mts"
 		},
 		"./react": {
-			"types": "./dist/react.d.ts",
-			"import": "./dist/react.mjs"
+			"import": "./dist/react.mjs",
+			"types": "./dist/react.d.mts"
 		}
 	},
 	"scripts": {
