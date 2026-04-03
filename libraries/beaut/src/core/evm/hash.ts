@@ -1,4 +1,4 @@
-type FormatEvmHashOptions = {
+type HashFormatOptions = {
 	prefixLength?: number;
 	suffixLength?: number;
 };
@@ -19,7 +19,7 @@ type FormatEvmHashOptions = {
  * @param options - Formatting options
  * @returns A shortened version of the hash, or an empty string if invalid
  */
-const formatEvmHash = (hash?: string | null, options: FormatEvmHashOptions = {}): string => {
+const hash = (hash?: string | null, options: HashFormatOptions = {}): string => {
 	if (!hash || typeof hash !== "string") return "";
 
 	const { prefixLength = 6, suffixLength = 4 } = options;
@@ -37,4 +37,4 @@ const formatEvmHash = (hash?: string | null, options: FormatEvmHashOptions = {})
 	return `${trimmed.slice(0, prefixLength)}...${trimmed.slice(-suffixLength)}`;
 };
 
-export { formatEvmHash, type FormatEvmHashOptions };
+export { hash, type HashFormatOptions };

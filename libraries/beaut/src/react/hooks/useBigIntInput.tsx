@@ -2,6 +2,7 @@ import React from "react";
 
 type UseBigIntInputOptions = {
 	decimals?: number;
+	fallback?: bigint;
 };
 
 type UseBigIntInputResult = {
@@ -11,44 +12,77 @@ type UseBigIntInputResult = {
 	isError: boolean;
 };
 
-const normalizeDecimals = (decimals: number) => Math.max(0, Math.floor(decimals));
+/**
+ * React hook to manage numeric string input and safely convert it to bigint with decimals.
+ *
+ * Example:
+ * Input: "1.5" with decimals = 18
+ * → valueAsBigInt: 1500000000000000000n
+ *
+ * Features:
+ * - Handles invalid input gracefully (regex-based validation)
+ * - Supports configurable decimals (default: 18)
+ * - Prevents unsafe bigint conversions
+ * - Keeps string input and bigint value in sync
+ * - Provides error state for invalid user input
+ *
+ * @param options - Hook configuration
+ * @returns Controlled input state + bigint representation
+ */
+const useBigIntInput = (options: UseBigIntInputOptions = {}): UseBigIntInputResult => {
+	const { decimals = 18, fallback = 0n } = options;
 
-const buildNumberValidator = (decimals: number) => {
-	if (decimals <= 0) return /^(\d+)?$/;
-	return new RegExp(`^(\\d+(\\.\\d{0,${decimals}})?)?$`);
-};
+	const safeDecimals = React.useMemo(() => {
+		return Number.isInteger(decimals) && decimals >= 0 ? decimals : 18;
+	}, [decimals]);
 
-const isValidNumberInput = (input: string, validator: RegExp): boolean => validator.test(input);
+	const numberValidator = React.useMemo(() => {
+		if (safeDecimals <= 0) return /^(\d+)?$/;
+		return new RegExp(`^(\\d+(\\.\\d{0,${safeDecimals}})?)?$`);
+	}, [safeDecimals]);
 
-const toBigIntWithDecimals = (value: string, decimals: number) => {
-	if (value === "") return 0n;
-	const [integerPart, decimalPart] = value.split(".");
-	if (decimals <= 0) return BigInt(integerPart || "0");
-	return BigInt((integerPart || "0") + (decimalPart || "").padEnd(decimals, "0"));
-};
+	const [value, setValue] = React.useState<string>("");
+	const [valueAsBigInt, setValueAsBigInt] = React.useState<bigint>(fallback);
+	const [isError, setIsError] = React.useState<boolean>(false);
 
-const useBigIntInput = ({ decimals = 18 }: UseBigIntInputOptions = {}): UseBigIntInputResult => {
-	const safeDecimals = normalizeDecimals(decimals);
-	const numberValidator = React.useMemo(() => buildNumberValidator(safeDecimals), [safeDecimals]);
+	const toBigIntWithDecimals = React.useCallback(
+		(input: string): bigint => {
+			if (!input) return fallback;
 
-	const [value, setValue] = React.useState("");
-	const [valueAsBigInt, setValueAsBigInt] = React.useState<bigint>(0n);
-	const [isError, setIsError] = React.useState(false);
+			const [integerPart, decimalPart = ""] = input.split(".");
 
-	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const nextValue = e.target.value;
+			if (safeDecimals <= 0) {
+				return BigInt(integerPart || "0");
+			}
 
-		if (!isValidNumberInput(nextValue, numberValidator)) {
-			setIsError(true);
-			return;
-		}
+			const normalized = (integerPart || "0") + decimalPart.padEnd(safeDecimals, "0");
 
-		const nextBigInt = toBigIntWithDecimals(nextValue, safeDecimals);
+			try {
+				return BigInt(normalized);
+			} catch {
+				return fallback;
+			}
+		},
+		[safeDecimals, fallback],
+	);
 
-		setIsError(false);
-		setValue(nextValue);
-		setValueAsBigInt(nextBigInt);
-	};
+	const handleInputChange = React.useCallback(
+		(e: React.ChangeEvent<HTMLInputElement>) => {
+			const nextValue = e.target.value.trim();
+
+			if (!numberValidator.test(nextValue)) {
+				setIsError(true);
+				return;
+			}
+
+			const nextBigInt = toBigIntWithDecimals(nextValue);
+
+			setIsError(false);
+			setValue(nextValue);
+			setValueAsBigInt(nextBigInt);
+		},
+		[numberValidator, toBigIntWithDecimals],
+	);
 
 	return {
 		value,
@@ -58,4 +92,4 @@ const useBigIntInput = ({ decimals = 18 }: UseBigIntInputOptions = {}): UseBigIn
 	};
 };
 
-export { useBigIntInput };
+export { useBigIntInput, type UseBigIntInputOptions, type UseBigIntInputResult };

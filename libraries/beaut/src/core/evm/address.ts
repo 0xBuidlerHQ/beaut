@@ -1,4 +1,4 @@
-type FormatEvmAddressOptions = {
+type AddressFormatOptions = {
 	prefixLength?: number;
 	suffixLength?: number;
 };
@@ -19,7 +19,7 @@ type FormatEvmAddressOptions = {
  * @param options - Formatting options
  * @returns A shortened version of the address, or an empty string if invalid
  */
-const formatEvmAddress = (address?: string | null, options: FormatEvmAddressOptions = {}): string => {
+const address = (address?: string | null, options: AddressFormatOptions = {}): string => {
 	if (!address || typeof address !== "string") return "";
 
 	const { prefixLength = 6, suffixLength = 4 } = options;
@@ -42,4 +42,4 @@ const formatEvmAddress = (address?: string | null, options: FormatEvmAddressOpti
 	return `${trimmed.slice(0, prefixLength)}...${trimmed.slice(-suffixLength)}`;
 };
 
-export { formatEvmAddress, type FormatEvmAddressOptions };
+export { address, type AddressFormatOptions };
