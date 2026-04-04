@@ -1,7 +1,8 @@
 import tsconfigPaths from "vite-tsconfig-paths";
 import { defineConfig } from "vocs";
-import { Sidebar } from "./config/sidebar";
 
+import { Links } from "./config/links";
+import { Sidebar } from "./config/sidebar";
 import packageJson from "./package.json";
 
 export default defineConfig({
@@ -30,6 +31,14 @@ export default defineConfig({
 	},
 	sidebar: Sidebar,
 	topNav: [
+		{
+			text: "Core",
+			link: Links.core.introduction.gettingStarted,
+		},
+		{
+			text: "React",
+			link: Links.react.introduction.gettingStarted,
+		},
 		{
 			text: packageJson.version,
 			items: [

@@ -1,12 +1,29 @@
 const Links = {
-	Introduction: {
-		whyRelay: "/docs/introduction",
-		installation: "/docs/installation",
-		gettingStarted: "/docs/getting-started",
-		faq: "/docs/faq",
+	core: {
+		introduction: {
+			rationale: "/core/rationale",
+			installation: "/core/installation",
+			gettingStarted: "/core/getting-started",
+		},
+
+		functions: {
+			evm: {
+				address: "/core/evm/address",
+			},
+			misc: {},
+		},
 	},
-	Examples: {
-		simpleExample: "/docs/examples/simple-example",
+
+	react: {
+		introduction: {
+			rationale: "/react/rationale",
+			installation: "/react/installation",
+			gettingStarted: "/react/getting-started",
+		},
+		components: {},
+		hooks: {
+			useBigIntInput: "/react/useBigIntInput",
+		},
 	},
 };
 

@@ -22,10 +22,7 @@
 
 		"baseUrl": ".",
 		"paths": {
-			"@components/*": ["./components/*"],
-			"@config/*": ["./config/*"],
-			"@examples/*": ["./examples/*"],
-			"@pages/*": ["./pages/*"]
+			"@*": ["./*"]
 		}
 	},
 	"include": ["**/*.ts", "**/*.tsx"]
