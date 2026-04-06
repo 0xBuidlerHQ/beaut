@@ -1,0 +1,45 @@
+---
+layout: docs
+---
+
+import { useBigIntInput } from "@0xhq/beaut/react";
+
+# useBigIntInput
+
+Keeps a controlled input value synchronized with a bigint representation while enforcing decimal precision rules, input validation, and an explicit error flag so conversions never throw.
+
+## Import
+
+```ts twoslash
+import { useBigIntInput } from "@0xhq/beaut/react";
+```
+
+## Usage
+
+```ts twoslash
+import { useBigIntInput } from "@0xhq/beaut/react";
+
+const { value, valueAsBigInt, handleInputChange, isError } = useBigIntInput({ decimals: 18, fallback: 0n }); // [!code hl]
+
+// <input value={value} onChange={handleInputChange} />
+```
+
+## Types
+
+### Parameters
+
+```ts twoslash
+import { useBigIntInput } from "@0xhq/beaut/react";
+// ---cut---
+type Type = Parameters<typeof useBigIntInput>;
+//   ^?
+```
+
+### Return Type
+
+```ts twoslash
+import { useBigIntInput } from "@0xhq/beaut/react";
+// ---cut---
+type Type = ReturnType<typeof useBigIntInput>;
+//   ^?
+```

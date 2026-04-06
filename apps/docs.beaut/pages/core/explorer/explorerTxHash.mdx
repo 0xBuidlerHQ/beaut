@@ -1,0 +1,48 @@
+---
+layout: docs
+---
+
+import { Beaut } from "@0xhq/beaut";
+
+# explorerTxHash
+
+Builds a transaction URL for a given explorer by validating the transaction hash, trimming trailing slashes on the base URL, and allowing a custom path segment.
+
+## Import
+
+```ts twoslash
+import { Beaut } from "@0xhq/beaut";
+```
+
+## Usage
+
+```ts twoslash
+import { Beaut } from "@0xhq/beaut";
+
+const txUrl = Beaut.explorerTxHash(
+	"https://etherscan.io",
+	"0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890",
+); // [!code hl]
+
+Output: "https://etherscan.io/tx/0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890"
+```
+
+## Types
+
+### Parameters
+
+```ts twoslash
+import { Beaut } from "@0xhq/beaut";
+// ---cut---
+type Type = Parameters<typeof Beaut.explorerTxHash>;
+//   ^?
+```
+
+### Return Type
+
+```ts twoslash
+import { Beaut } from "@0xhq/beaut";
+// ---cut---
+type Type = ReturnType<typeof Beaut.explorerTxHash>;
+//   ^?
+```

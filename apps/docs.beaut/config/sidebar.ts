@@ -4,46 +4,40 @@ import { Links } from "./links";
 const Sidebar: SidebarPrimitive = {
 	"/core/": [
 		{
-			text: "Introduction",
+			text: "",
 			items: [
-				{
-					text: "Rationale",
-					link: Links.core.introduction.rationale,
-				},
-				{
-					text: "Installation",
-					link: Links.core.introduction.installation,
-				},
-				{
-					text: "Getting Started",
-					link: Links.core.introduction.gettingStarted,
-				},
+				{ text: "Introduction", link: Links.core.introduction.rationale },
+				{ text: "Installation", link: Links.core.introduction.installation },
+				{ text: "Getting Started", link: Links.core.introduction.gettingStarted },
+			],
+		},
+
+		{
+			text: "Base",
+			items: [
+				{ text: "address", link: Links.core.base.address },
+				{ text: "hash", link: Links.core.base.hash },
 			],
 		},
 		{
-			text: "Evm",
+			text: "Currency",
+			items: [{ text: "money", link: Links.core.currency.money }],
+		},
+		{
+			text: "Explorer",
 			items: [
-				{
-					text: "address",
-					link: Links.core.functions.evm.address,
-				},
-				{
-					text: "bigint",
-					link: Links.core.functions.evm.address,
-				},
-				{
-					text: "explorer",
-					link: Links.core.functions.evm.address,
-				},
-				{
-					text: "hash",
-					link: Links.core.functions.evm.address,
-				},
+				{ text: "explorerAddress", link: Links.core.explorer.explorerAddress },
+				{ text: "explorerBlock", link: Links.core.explorer.explorerBlock },
+				{ text: "explorerTxHash", link: Links.core.explorer.explorerTxHash },
 			],
 		},
 		{
-			text: "Misc",
-			items: [],
+			text: "Number",
+			items: [
+				{ text: "bigint", link: Links.core.number.bigint },
+				{ text: "kmb", link: Links.core.number.kmb },
+				{ text: "percent", link: Links.core.number.percent },
+			],
 		},
 	],
 	"/react/": [

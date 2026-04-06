@@ -1,0 +1,45 @@
+---
+layout: docs
+---
+
+import { Beaut } from "@0xhq/beaut";
+
+# explorerAddress
+
+Builds a safe explorer URL that points to an EVM address by validating the hash, trimming trailing slashes, and applying a configurable path segment.
+
+## Import
+
+```ts twoslash
+import { Beaut } from "@0xhq/beaut";
+```
+
+## Usage
+
+```ts twoslash
+import { Beaut } from "@0xhq/beaut";
+
+const url = Beaut.explorerAddress("https://etherscan.io", "0x1234567890abcdef1234567890abcdef12345678"); // [!code hl]
+
+Output: "https://etherscan.io/address/0x1234567890abcdef1234567890abcdef12345678"
+```
+
+## Types
+
+### Parameters
+
+```ts twoslash
+import { Beaut } from "@0xhq/beaut";
+// ---cut---
+type Type = Parameters<typeof Beaut.explorerAddress>;
+//   ^?
+```
+
+### Return Type
+
+```ts twoslash
+import { Beaut } from "@0xhq/beaut";
+// ---cut---
+type Type = ReturnType<typeof Beaut.explorerAddress>;
+//   ^?
+```

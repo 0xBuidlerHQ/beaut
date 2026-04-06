@@ -1,0 +1,46 @@
+---
+layout: docs
+---
+
+import { Beaut } from "@0xhq/beaut";
+
+# percent
+
+Creates a reusable percent formatter that enforces two-decimal output via `Intl.NumberFormat` and surfaces a fallback when either the formatter construction or the provided number fails validation.
+
+## Import
+
+```ts twoslash
+import { Beaut } from "@0xhq/beaut";
+```
+
+## Usage
+
+```ts twoslash
+import { Beaut } from "@0xhq/beaut";
+
+const formatPercent = Beaut.percent(); // [!code hl]
+const percentString = formatPercent(0.1234);
+
+Output: "12.34%"
+```
+
+## Types
+
+### Parameters
+
+```ts twoslash
+import { Beaut } from "@0xhq/beaut";
+// ---cut---
+type Type = Parameters<typeof Beaut.percent>;
+//   ^?
+```
+
+### Return Type
+
+```ts twoslash
+import { Beaut } from "@0xhq/beaut";
+// ---cut---
+type Type = ReturnType<typeof Beaut.percent>;
+//   ^?
+```
