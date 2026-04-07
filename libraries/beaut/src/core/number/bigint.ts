@@ -1,6 +1,7 @@
+import type { ExpandDeep } from "@utils";
 import { formatUnits } from "viem";
 
-type FormatBigIntOptions = {
+type Options = {
 	fallback?: string;
 };
 
@@ -22,7 +23,7 @@ type FormatBigIntOptions = {
  * @param options - Formatting options
  * @returns A formatted string representation of the value, or fallback if invalid
  */
-const bigint = (value?: bigint | null, decimals?: number | null, options: FormatBigIntOptions = {}): string => {
+const bigint = (value?: bigint | null, decimals?: number | null, options: Options = {}): string => {
 	const { fallback = "0" } = options;
 
 	if (value === undefined || value === null) return fallback;
@@ -39,4 +40,7 @@ const bigint = (value?: bigint | null, decimals?: number | null, options: Format
 	}
 };
 
-export { bigint, type FormatBigIntOptions };
+type BigintParameters = ExpandDeep<Parameters<typeof bigint>>;
+type BigintReturnType = ReturnType<typeof bigint>;
+
+export { bigint, type BigintParameters, type BigintReturnType };

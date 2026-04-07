@@ -1,3 +1,5 @@
+import type { ExpandDeep } from "@utils";
+
 type Options = {
 	locale?: Intl.LocalesArgument;
 	currency?: string;
@@ -33,7 +35,7 @@ const money = (value?: Parameters<Intl.NumberFormat["format"]>[0] | null, option
 
 	const baseOptions: Intl.NumberFormatOptions = {
 		style: "currency",
-		currency,
+		currency: currency,
 	};
 
 	try {
@@ -46,4 +48,7 @@ const money = (value?: Parameters<Intl.NumberFormat["format"]>[0] | null, option
 	}
 };
 
-export { money };
+type MoneyParameters = ExpandDeep<Parameters<typeof money>>;
+type MoneyReturnType = ReturnType<typeof money>;
+
+export { money, type MoneyParameters, type MoneyReturnType };

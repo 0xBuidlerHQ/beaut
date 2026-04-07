@@ -2,44 +2,37 @@
 layout: docs
 ---
 
-import { useBigIntInput } from "@0xhq/beaut/react";
+import { ExampleUseBigIntInput } from "./useBigIntInput.example";
 
 # useBigIntInput
 
-Keeps a controlled input value synchronized with a bigint representation while enforcing decimal precision rules, input validation, and an explicit error flag so conversions never throw.
-
-## Import
-
-```ts twoslash
-import { useBigIntInput } from "@0xhq/beaut/react";
-```
+Keeps a controlled input value synchronized with a `bigint` representation while enforcing decimal precision rules, input validation, and an explicit error flag so conversions never throw.
 
 ## Usage
 
-```ts twoslash
+```tsx twoslash
+import React from 'react';
+// ---cut---
 import { useBigIntInput } from "@0xhq/beaut/react";
 
-const { value, valueAsBigInt, handleInputChange, isError } = useBigIntInput({ decimals: 18, fallback: 0n }); // [!code hl]
-
-// <input value={value} onChange={handleInputChange} />
+const { value, valueAsBigInt, handleInputChange, isError } = useBigIntInput(); // [!code hl]
+<input value={value} onChange={handleInputChange} />
 ```
+
+## Example
+
+<ExampleUseBigIntInput/>
 
 ## Types
 
 ### Parameters
 
 ```ts twoslash
-import { useBigIntInput } from "@0xhq/beaut/react";
-// ---cut---
-type Type = Parameters<typeof useBigIntInput>;
-//   ^?
+import { UseBigIntInputParameters } from "@0xhq/beaut/react";
 ```
 
 ### Return Type
 
 ```ts twoslash
-import { useBigIntInput } from "@0xhq/beaut/react";
-// ---cut---
-type Type = ReturnType<typeof useBigIntInput>;
-//   ^?
+import { UseBigIntInputReturnType } from "@0xhq/beaut/react";
 ```

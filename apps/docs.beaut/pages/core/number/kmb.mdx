@@ -6,20 +6,14 @@ import { Beaut } from "@0xhq/beaut";
 
 # kmb
 
-Formats numbers into compact K/M/B notation via `Intl.NumberFormat`, while applying safe fallbacks and honoring locale/format overrides.
-
-## Import
-
-```ts twoslash
-import { Beaut } from "@0xhq/beaut";
-```
+Formats `numbers` into compact K/M/B notation.
 
 ## Usage
 
 ```ts twoslash
 import { Beaut } from "@0xhq/beaut";
 
-const compact = Beaut.kmb(1500000); // [!code hl]
+const formatted = Beaut.kmb(1500000); // [!code hl]
 
 Output: "1.50M"
 ```
@@ -29,17 +23,11 @@ Output: "1.50M"
 ### Parameters
 
 ```ts twoslash
-import { Beaut } from "@0xhq/beaut";
-// ---cut---
-type Type = Parameters<typeof Beaut.kmb>;
-//   ^?
+import { KmbParameters } from "@0xhq/beaut";
 ```
 
 ### Return Type
 
 ```ts twoslash
-import { Beaut } from "@0xhq/beaut";
-// ---cut---
-type Type = ReturnType<typeof Beaut.kmb>;
-//   ^?
+import { KmbReturnType } from "@0xhq/beaut";
 ```

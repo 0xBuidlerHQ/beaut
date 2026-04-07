@@ -6,20 +6,14 @@ import { Beaut } from "@0xhq/beaut";
 
 # explorerBlock
 
-Builds a block URL for a given explorer by normalizing the base URL, validating that the block number is a positive integer, and appending the configured path segment.
-
-## Import
-
-```ts twoslash
-import { Beaut } from "@0xhq/beaut";
-```
+Formats a safe `explorer URL` that points to a `block`.
 
 ## Usage
 
 ```ts twoslash
 import { Beaut } from "@0xhq/beaut";
 
-const blockUrl = Beaut.explorerBlock("https://etherscan.io", 12345678); // [!code hl]
+const formatted = Beaut.explorerBlock("https://etherscan.io", 12345678); // [!code hl]
 
 Output: "https://etherscan.io/block/12345678"
 ```
@@ -29,17 +23,11 @@ Output: "https://etherscan.io/block/12345678"
 ### Parameters
 
 ```ts twoslash
-import { Beaut } from "@0xhq/beaut";
-// ---cut---
-type Type = Parameters<typeof Beaut.explorerBlock>;
-//   ^?
+import { ExplorerBlockParameters } from "@0xhq/beaut";
 ```
 
 ### Return Type
 
 ```ts twoslash
-import { Beaut } from "@0xhq/beaut";
-// ---cut---
-type Type = ReturnType<typeof Beaut.explorerBlock>;
-//   ^?
+import { ExplorerBlockReturnType } from "@0xhq/beaut";
 ```

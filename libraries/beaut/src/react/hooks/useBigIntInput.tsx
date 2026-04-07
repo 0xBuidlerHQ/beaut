@@ -1,11 +1,12 @@
+import type { ExpandDeep } from "@utils";
 import React from "react";
 
-type UseBigIntInputOptions = {
+type Options = {
 	decimals?: number;
 	fallback?: bigint;
 };
 
-type UseBigIntInputResult = {
+type Result = {
 	value: string;
 	valueAsBigInt: bigint;
 	handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -29,7 +30,7 @@ type UseBigIntInputResult = {
  * @param options - Hook configuration
  * @returns Controlled input state + bigint representation
  */
-const useBigIntInput = (options: UseBigIntInputOptions = {}): UseBigIntInputResult => {
+const useBigIntInput = (options: Options = {}): Result => {
 	const { decimals = 18, fallback = 0n } = options;
 
 	const safeDecimals = React.useMemo(() => {
@@ -92,4 +93,7 @@ const useBigIntInput = (options: UseBigIntInputOptions = {}): UseBigIntInputResu
 	};
 };
 
-export { useBigIntInput, type UseBigIntInputOptions, type UseBigIntInputResult };
+type UseBigIntInputParameters = ExpandDeep<Parameters<typeof useBigIntInput>>;
+type UseBigIntInputReturnType = ReturnType<typeof useBigIntInput>;
+
+export { useBigIntInput, type UseBigIntInputParameters, type UseBigIntInputReturnType };

@@ -6,20 +6,14 @@ import { Beaut } from "@0xhq/beaut";
 
 # address
 
-Shortens an EVM address or ENS name into a compact, readable form by trimming the prefix and suffix while leaving ENS names untouched and returning an empty string for invalid input.
-
-## Import
-
-```ts twoslash
-import { Beaut } from "@0xhq/beaut";
-```
+Formats an `address` into a human-friendly string.
 
 ## Usage
 
 ```ts twoslash
 import { Beaut } from "@0xhq/beaut";
 
-const shortAddress = Beaut.address("0x1234567890abcdef1234567890abcdef12345678"); // [!code hl]
+const formatted = Beaut.address("0x1234567890abcdef1234567890abcdef12345678"); // [!code hl]
 
 Output: "0x1234...5678"
 ```
@@ -29,17 +23,11 @@ Output: "0x1234...5678"
 ### Parameters
 
 ```ts twoslash
-import { Beaut } from "@0xhq/beaut";
-// ---cut---
-type Type = Parameters<typeof Beaut.address>;
-//   ^?
+import { AddressParameters } from "@0xhq/beaut";
 ```
 
 ### Return Type
 
 ```ts twoslash
-import { Beaut } from "@0xhq/beaut";
-// ---cut---
-type Type = ReturnType<typeof Beaut.address>;
-//   ^?
+import { AddressReturnType } from "@0xhq/beaut";
 ```

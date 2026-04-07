@@ -1,3 +1,5 @@
+import type { ExpandDeep } from "@utils";
+
 type Options = {
 	path?: string;
 };
@@ -38,4 +40,7 @@ const explorerAddress = (evmExplorerUrl?: string | null, address?: string | null
 	return `${normalizedBase}/${path}/${addr}`;
 };
 
-export { explorerAddress };
+type ExplorerAddressParameters = ExpandDeep<Parameters<typeof explorerAddress>>;
+type ExplorerAddressReturnType = ReturnType<typeof explorerAddress>;
+
+export { explorerAddress, type ExplorerAddressParameters, type ExplorerAddressReturnType };

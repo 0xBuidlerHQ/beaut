@@ -1,11 +1,11 @@
 const Links = {
-	core: {
-		introduction: {
-			rationale: "/core/rationale",
-			installation: "/core/installation",
-			gettingStarted: "/core/getting-started",
-		},
+	introduction: {
+		why: "/why",
+		installation: "/installation",
+		gettingStarted: "/getting-started",
+	},
 
+	core: {
 		base: {
 			address: "/core/base/address",
 			hash: "/core/base/hash",
@@ -26,14 +26,10 @@ const Links = {
 	},
 
 	react: {
-		introduction: {
-			rationale: "/react/rationale",
-			installation: "/react/installation",
-			gettingStarted: "/react/getting-started",
-		},
 		components: {},
+
 		hooks: {
-			useBigIntInput: "/react/useBigIntInput",
+			useBigIntInput: "/react/hooks/useBigIntInput",
 		},
 	},
 };

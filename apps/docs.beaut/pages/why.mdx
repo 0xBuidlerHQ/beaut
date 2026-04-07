@@ -1,0 +1,30 @@
+---
+layout: docs
+---
+
+# Why `@0xhq/beaut` ?
+
+## The problems
+
+Building crypto products often starts with a long, familiar checklist:
+
+- trim `addresses` for UI,
+- collapse transaction `hashes`,
+- format `balances` with the right `locale` and precision,
+- turn raw block/tx data into `explorer links`,
+- validating `bigint` forms,
+
+... and the list goes on.
+
+Every time, teams end up `reinventing the wheel`, writing their own validation,
+deciding which locales to support, and patching edge cases behind the scenes.
+That repetition leaves you less time for the actual product and more for arguing
+about whether the hash should show 6 or 8 characters.
+
+## The Beaut way
+
+`Beaut` is a response to that `fatigue`. Instead of shipping every repo with a bespoke
+suite of small utilities, Beaut gathers those indispensable helpers into a single,
+dependable `toolbox` that already validates inputs, applies sane defaults, and exposes
+a predictable surface across base utilities, currency formatters, explorer link
+builders, number helpers and more.

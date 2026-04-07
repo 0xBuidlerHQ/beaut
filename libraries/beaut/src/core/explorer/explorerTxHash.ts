@@ -1,3 +1,5 @@
+import type { ExpandDeep } from "@utils";
+
 type Options = {
 	path?: string;
 };
@@ -38,4 +40,7 @@ const explorerTxHash = (evmExplorerUrl?: string | null, txHash?: string | null, 
 	return `${normalizedBase}/${path}/${hash}`;
 };
 
-export { explorerTxHash };
+type ExplorerTxHashParameters = ExpandDeep<Parameters<typeof explorerTxHash>>;
+type ExplorerTxHashReturnType = ReturnType<typeof explorerTxHash>;
+
+export { explorerTxHash, type ExplorerTxHashParameters, type ExplorerTxHashReturnType };

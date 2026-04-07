@@ -1,4 +1,6 @@
-type HashFormatOptions = {
+import type { ExpandDeep } from "@utils";
+
+type Options = {
 	prefixLength?: number;
 	suffixLength?: number;
 };
@@ -19,7 +21,7 @@ type HashFormatOptions = {
  * @param options - Formatting options
  * @returns A shortened version of the hash, or an empty string if invalid
  */
-const hash = (hash?: string | null, options: HashFormatOptions = {}): string => {
+const hash = (hash?: string | null, options: Options = {}): string => {
 	if (!hash || typeof hash !== "string") return "";
 
 	const { prefixLength = 6, suffixLength = 4 } = options;
@@ -37,4 +39,7 @@ const hash = (hash?: string | null, options: HashFormatOptions = {}): string => 
 	return `${trimmed.slice(0, prefixLength)}...${trimmed.slice(-suffixLength)}`;
 };
 
-export { hash, type HashFormatOptions };
+type HashParameters = ExpandDeep<Parameters<typeof hash>>;
+type HashReturnType = ReturnType<typeof hash>;
+
+export { hash, type HashParameters, type HashReturnType };

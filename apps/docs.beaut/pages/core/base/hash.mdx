@@ -6,20 +6,14 @@ import { Beaut } from "@0xhq/beaut";
 
 # hash
 
-Condenses a 66-character transaction hash into a human-friendly string by keeping a configurable prefix and suffix while returning an empty string for malformed data.
-
-## Import
-
-```ts twoslash
-import { Beaut } from "@0xhq/beaut";
-```
+Formats a `hash` into a human-friendly string.
 
 ## Usage
 
 ```ts twoslash
 import { Beaut } from "@0xhq/beaut";
 
-const shortHash = Beaut.hash("0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890"); // [!code hl]
+const formatted = Beaut.hash("0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890"); // [!code hl]
 
 Output: "0xabcd...7890"
 ```
@@ -29,17 +23,11 @@ Output: "0xabcd...7890"
 ### Parameters
 
 ```ts twoslash
-import { Beaut } from "@0xhq/beaut";
-// ---cut---
-type Type = Parameters<typeof Beaut.hash>;
-//   ^?
+import { HashParameters } from "@0xhq/beaut";
 ```
 
 ### Return Type
 
 ```ts twoslash
-import { Beaut } from "@0xhq/beaut";
-// ---cut---
-type Type = ReturnType<typeof Beaut.hash>;
-//   ^?
+import { HashReturnType } from "@0xhq/beaut";
 ```

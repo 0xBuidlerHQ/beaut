@@ -6,13 +6,7 @@ import { Beaut } from "@0xhq/beaut";
 
 # bigint
 
-Converts raw `bigint` inputs into human-readable decimal strings through `viem.formatUnits`, while validating decimals and returning a fallback when any argument is malformed.
-
-## Import
-
-```ts twoslash
-import { Beaut } from "@0xhq/beaut";
-```
+Formats raw `bigint` inputs into human-readable decimal strings.
 
 ## Usage
 
@@ -29,17 +23,11 @@ Output: "1.0"
 ### Parameters
 
 ```ts twoslash
-import { Beaut } from "@0xhq/beaut";
-// ---cut---
-type Type = Parameters<typeof Beaut.bigint>;
-//   ^?
+import { BigintParameters } from "@0xhq/beaut";
 ```
 
 ### Return Type
 
 ```ts twoslash
-import { Beaut } from "@0xhq/beaut";
-// ---cut---
-type Type = ReturnType<typeof Beaut.bigint>;
-//   ^?
+import { BigintReturnType } from "@0xhq/beaut";
 ```

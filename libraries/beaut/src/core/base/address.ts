@@ -1,4 +1,6 @@
-type AddressFormatOptions = {
+import type { ExpandDeep } from "@utils";
+
+type Options = {
 	prefixLength?: number;
 	suffixLength?: number;
 };
@@ -19,7 +21,7 @@ type AddressFormatOptions = {
  * @param options - Formatting options
  * @returns A shortened version of the address, or an empty string if invalid
  */
-const address = (address?: string | null, options: AddressFormatOptions = {}): string => {
+const address = (address?: string | null, options: Options = {}): string => {
 	if (!address || typeof address !== "string") return "";
 
 	const { prefixLength = 6, suffixLength = 4 } = options;
@@ -42,4 +44,7 @@ const address = (address?: string | null, options: AddressFormatOptions = {}): s
 	return `${trimmed.slice(0, prefixLength)}...${trimmed.slice(-suffixLength)}`;
 };
 
-export { address, type AddressFormatOptions };
+type AddressParameters = ExpandDeep<Parameters<typeof address>>;
+type AddressReturnType = ExpandDeep<ReturnType<typeof address>>;
+
+export { address, type AddressParameters, type AddressReturnType };

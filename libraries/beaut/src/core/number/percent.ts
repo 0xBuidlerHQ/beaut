@@ -1,26 +1,28 @@
-type FormatPercentOptions = {
+import type { ExpandDeep } from "@utils";
+
+type Options = {
 	locale?: Intl.LocalesArgument;
 	formatOptions?: Intl.NumberFormatOptions;
 	fallback?: string;
 };
 
 /**
- * Creates a percent formatter function using Intl.NumberFormat.
+ * Formats a number as a percent using Intl.NumberFormat.
  *
  * Example:
  * 0.1234 → "12.34%"
  *
  * Features:
- * - Returns a reusable formatter function
- * - Handles invalid inputs safely at call time
+ * - Handles invalid inputs safely by returning a fallback string
  * - Supports custom Intl.NumberFormat overrides
- * - Supports custom locale
- * - Provides a customizable fallback value
+ * - Supports custom locale settings
+ * - Provides a configurable fallback value
  *
+ * @param value - The number to format as a percent
  * @param options - Formatter configuration (locale, overrides, fallback)
- * @returns A function that formats numbers as percentages
+ * @returns The formatted percent string or the fallback on failure
  */
-const percent = (options: FormatPercentOptions = {}): ((value?: number | null) => string) => {
+const percent = (value?: number | null, options: Options = {}): string => {
 	const { locale = "en-US", formatOptions = {}, fallback = "0%" } = options;
 
 	const baseOptions: Intl.NumberFormatOptions = {
@@ -29,29 +31,22 @@ const percent = (options: FormatPercentOptions = {}): ((value?: number | null) =
 		maximumFractionDigits: 2,
 	};
 
-	let formatter: Intl.NumberFormat;
+	if (value === undefined || value === null) return fallback;
+
+	const numericValue = Number(value);
+	if (!Number.isFinite(numericValue)) return fallback;
 
 	try {
-		formatter = new Intl.NumberFormat(locale, {
+		return new Intl.NumberFormat(locale, {
 			...baseOptions,
 			...formatOptions,
-		});
+		}).format(numericValue);
 	} catch {
-		return () => fallback;
+		return fallback;
 	}
-
-	return (value?: number | null): string => {
-		if (value === undefined || value === null) return fallback;
-
-		const numericValue = Number(value);
-		if (!Number.isFinite(numericValue)) return fallback;
-
-		try {
-			return formatter.format(numericValue);
-		} catch {
-			return fallback;
-		}
-	};
 };
 
-export { percent, type FormatPercentOptions };
+type PercentParameters = ExpandDeep<Parameters<typeof percent>>;
+type PercentReturnType = ReturnType<typeof percent>;
+
+export { percent, type PercentParameters, type PercentReturnType };

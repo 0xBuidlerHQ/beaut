@@ -1,6 +1,6 @@
 {
 	"name": "@0xhq/beaut",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"type": "module",
 	"main": "./dist/core.mjs",
 	"types": "./dist/core.d.mts",

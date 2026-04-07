@@ -1,3 +1,5 @@
+import type { ExpandDeep } from "@utils";
+
 type Options = {
 	locale?: Intl.LocalesArgument;
 	formatOptions?: Intl.NumberFormatOptions;
@@ -48,4 +50,7 @@ const kmb = (value?: Parameters<Intl.NumberFormat["format"]>[0] | null, options:
 	}
 };
 
-export { kmb };
+type KmbParameters = ExpandDeep<Parameters<typeof kmb>>;
+type KmbReturnType = ReturnType<typeof kmb>;
+
+export { kmb, type KmbParameters, type KmbReturnType };

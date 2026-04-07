@@ -1,5 +1,5 @@
 ---
-title: Beaut · Lalala
+title: Beaut
 
 layout: landing
 ---
@@ -7,11 +7,10 @@ layout: landing
 import { HomePage } from 'vocs/components'
  
 <HomePage.Root>
-  <HomePage.Logo />
+  <HomePage.Logo className="size-40" />
   <HomePage.Tagline>Typed orchestration for sequential React flows</HomePage.Tagline>
-  <HomePage.InstallPackage name="@0xhq/relay" type="init" />
-  <HomePage.Description>Relay wraps each step in a Zustand store so you can reason about retries, navigation, and async status without scattering `useEffect` hooks.</HomePage.Description>
+  <HomePage.InstallPackage name="@0xhq/beaut" type="init" />
   <HomePage.Buttons>
-    <HomePage.Button href="/core/getting-started">Get started</HomePage.Button>
+    <HomePage.Button href="/getting-started">Get started</HomePage.Button>
   </HomePage.Buttons>
 </HomePage.Root>

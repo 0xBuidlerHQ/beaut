@@ -1,3 +1,5 @@
+import type { ExpandDeep } from "@utils";
+
 type Options = {
 	path?: string;
 };
@@ -37,4 +39,7 @@ const explorerBlock = (evmExplorerUrl?: string | null, block?: number | null, op
 	return `${normalizedBase}/${path}/${block}`;
 };
 
-export { explorerBlock };
+type ExplorerBlockParameters = ExpandDeep<Parameters<typeof explorerBlock>>;
+type ExplorerBlockReturnType = ReturnType<typeof explorerBlock>;
+
+export { explorerBlock, type ExplorerBlockParameters, type ExplorerBlockReturnType };

@@ -21,8 +21,7 @@
 		"noFallthroughCasesInSwitch": true,
 
 		"paths": {
-			"@core/*": ["./src/core/*"],
-			"@react/*": ["./src/react/*"]
+			"@*": ["./src/*"]
 		}
 	},
 	"include": ["**/*.ts", "**/*.tsx"]

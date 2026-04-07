@@ -6,20 +6,14 @@ import { Beaut } from "@0xhq/beaut";
 
 # money
 
-Formats numeric values into localized currency strings using `Intl.NumberFormat`, with defaults for USD/en-US plus overrides for locale, currency, number-format details, and a safe fallback when inputs are invalid.
-
-## Import
-
-```ts twoslash
-import { Beaut } from "@0xhq/beaut";
-```
+Formats `numbers` into localized currency strings.
 
 ## Usage
 
 ```ts twoslash
 import { Beaut } from "@0xhq/beaut";
 
-const formattedPrice = Beaut.money(1234.56, { currency: "EUR" }); // [!code hl]
+const formatted = Beaut.money(1234.56, { currency: "EUR" }); // [!code hl]
 
 Output: "€1,234.56"
 ```
@@ -29,17 +23,11 @@ Output: "€1,234.56"
 ### Parameters
 
 ```ts twoslash
-import { Beaut } from "@0xhq/beaut";
-// ---cut---
-type Type = Parameters<typeof Beaut.money>;
-//   ^?
+import { MoneyParameters } from "@0xhq/beaut";
 ```
 
 ### Return Type
 
 ```ts twoslash
-import { Beaut } from "@0xhq/beaut";
-// ---cut---
-type Type = ReturnType<typeof Beaut.money>;
-//   ^?
+import { MoneyReturnType } from "@0xhq/beaut";
 ```
