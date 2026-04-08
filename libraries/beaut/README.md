@@ -1,15 +1,14 @@
 <p align="center">
-  <a href="https://vocs.dev">
+  <a href="https://beaut.0xbuidlerhq.com">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/0xbuidlerhq/beaut/blob/main/.github/logo-dark.svg">
-      <img alt="Relay logo" src="https://github.com/0xbuidlerhq/beaut/blob/main/.github/logo-light.svg" width="auto" height="200">
+      <img alt="Relay logo" src="https://github.com/0xbuidlerhq/beaut/blob/main/.github/logo.svg" width="auto" height="200">
     </picture>
   </a>
 </p>
 
 # 💅 Beaut
 
-Beaut is a focused toolkit that helps you ship polished crypto-facing UI experiences with consistent formatting, validation, and React-friendly helpers.
+💅 Beaut is a focused toolkit that helps you ship polished crypto-facing UI experiences with consistent formatting, validation, and React-friendly helpers.
 
 ## Features
 
