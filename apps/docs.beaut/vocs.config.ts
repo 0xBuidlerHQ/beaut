@@ -51,17 +51,12 @@ export default defineConfig({
 		},
 	],
 	theme: {
-		accentColor: {
-			light: "#ff9318",
-			dark: "#ffc517",
-		},
+		colorScheme: "dark",
+		accentColor: "#ffc517",
 
 		variables: {
 			color: {
-				background: {
-					dark: "#1A191B",
-					light: "#1A191B",
-				},
+				background: "#1A191B",
 			},
 			topNav: {
 				horizontalPadding: "10px",
